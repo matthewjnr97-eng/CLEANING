@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreshCare Dry Cleaning</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #294254;
+    background: white;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.top {
+    background: #e6f4fb;
+    padding: 10px 6%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 12px;
+    color: #41677c;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 6%;
+}
+
+.logo {
+    font-size: 26px;
+    color: #438dc1;
+}
+
+.logo span {
+    color: #48bca9;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 12px;
+}
+
+nav a:hover {
+    color: #48bca9;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+    background: #48bca9;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn:hover {
+    background: #348d80;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    padding: 50px 7%;
+    background: #eff9fd;
+}
+
+.hero-content {
+    width: 50%;
+}
+
+.hero-content h4 {
+    color: #48bca9;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.hero-content h1 {
+    font-size: clamp(30px, 4vw, 46px);
+    color: #245779;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.hero-content h1 span {
+    color: #48bca9;
+}
+
+.hero-content p {
+    color: #69818f;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.hero-image {
+    width: 47%;
+    height: 340px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section {
+    padding: 55px 6%;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.heading h2 {
+    color: #245779;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.heading p {
+    font-size: 13px;
+    color: #78909c;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.service {
+    border: 1px solid #e2eff5;
+    background: white;
+    border-radius: 10px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: .3s;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px #438dc115;
+}
+
+.service-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #e3f8f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 18px;
+}
+
+.service h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #245779;
+}
+
+.service p {
+    color: #78909c;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.learn {
+    color: #299f90;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.about {
+    background: #f1f9fc;
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.about-image {
+    width: 48%;
+    height: 330px;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about-content h2 {
+    font-size: 28px;
+    line-height: 1.3;
+    color: #245779;
+    margin-bottom: 18px;
+}
+
+.about-content p {
+    color: #69818f;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.checks {
+    list-style: none;
+    margin-bottom: 22px;
+}
+
+.checks li {
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.checks li::before {
+    content: "✓";
+    color: #48bca9;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.pricing {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.price-card {
+    text-align: center;
+    border: 1px solid #e2eff5;
+    border-radius: 10px;
+    padding: 28px 20px;
+}
+
+.price-card.featured {
+    border: 2px solid #48bca9;
+    background: #f7fffd;
+}
+
+.price-card h3 {
+    color: #245779;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.price {
+    color: #48bca9;
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.price span {
+    font-size: 12px;
+    color: #78909c;
+    font-weight: normal;
+}
+
+.price-card p {
+    font-size: 13px;
+    color: #78909c;
+    margin-bottom: 18px;
+}
+
+.price-card ul {
+    list-style: none;
+    margin-bottom: 22px;
+}
+
+.price-card li {
+    font-size: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #e8f1f4;
+}
+
+.how {
+    background: #e9f7fb;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    text-align: center;
+}
+
+.step-number {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #48bca9;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+    font-weight: bold;
+    margin: 0 auto 15px;
+}
+
+.step h3 {
+    font-size: 15px;
+    color: #245779;
+    margin-bottom: 8px;
+}
+
+.step p {
+    font-size: 12px;
+    color: #69818f;
+}
+
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.review {
+    border: 1px solid #e2eff5;
+    border-radius: 10px;
+    padding: 23px;
+}
+
+.stars {
+    color: #eab74b;
+    margin-bottom: 12px;
+}
+
+.review p {
+    color: #69818f;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.review h4 {
+    font-size: 13px;
+    color: #245779;
+}
+
+.booking {
+    background: #eff9fd;
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.booking-content h2 {
+    color: #245779;
+    font-size: 29px;
+    margin-bottom: 15px;
+}
+
+.booking-content p {
+    font-size: 13px;
+    color: #69818f;
+    margin-bottom: 18px;
+}
+
+.booking-form {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #438dc110;
+}
+
+.booking-form h3 {
+    color: #245779;
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #dce9ee;
+    border-radius: 5px;
+    background: white;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.booking-form button {
+    width: 100%;
+}
+
+footer {
+    background: #e6f4fb;
+    padding: 40px 6% 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 25px;
+}
+
+.footer-content h3 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #245779;
+}
+
+.footer-content p,
+.footer-content a {
+    display: block;
+    color: #69818f;
+    font-size: 12px;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.footer-content a:hover {
+    color: #299f90;
+}
+
+.footer-logo {
+    color: #438dc1;
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.footer-logo span {
+    color: #48bca9;
+}
+
+.copyright {
+    border-top: 1px solid #d1e4ed;
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 30px;
+    color: #69818f;
+    font-size: 11px;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        padding: 15px 4%;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .hero {
+        padding: 35px 5%;
+        gap: 20px;
+    }
+
+    .hero-image {
+        height: 270px;
+    }
+
+    section {
+        padding: 40px 5%;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .about {
+        gap: 25px;
+    }
+
+    .about-image {
+        height: 280px;
+    }
+
+    .pricing {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .reviews {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .top {
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 10px;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 30px 5%;
+    }
+
+    .hero-content,
+    .hero-image {
+        width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-image {
+        height: 230px;
+    }
+
+    section {
+        padding: 35px 4%;
+    }
+
+    .heading h2 {
+        font-size: 23px;
+    }
+
+    .services,
+    .pricing,
+    .steps,
+    .reviews,
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about-image {
+        width: 100%;
+        height: 230px;
+    }
+
+    .about-content h2,
+    .booking-content h2 {
+        font-size: 25px;
+    }
+
+    .booking-form {
+        padding: 22px 17px;
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+    <span>✉ info@freshcare.com</span>
+    <span>☎ +234 800 000 0000</span>
+    <span>MON - SAT: 8AM - 7PM</span>
+</div>
+
+<header>
+    <h2 class="logo">Fresh<span>Care.</span></h2>
+
+    <nav>
+        <a href="#home">HOME</a>
+        <a href="#services">SERVICES</a>
+        <a href="#about">ABOUT</a>
+        <a href="#pricing">PRICING</a>
+        <a href="#reviews">REVIEWS</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+    <a href="#booking" class="btn">BOOK NOW</a>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h4>WELCOME TO FRESHCARE</h4>
+        <h1>FRESH CLOTHES, <span>HAPPIER DAYS</span></h1>
+        <p>Enjoy convenient laundry and dry-cleaning services. We take care of your clothes with attention to detail, so you can enjoy more of your day.</p>
+        <a href="#booking" class="btn">BOOK A PICKUP</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=900&q=80" alt="Fresh laundry">
+    </div>
+</section>
+
+<section id="services">
+    <div class="heading">
+        <h2>OUR SERVICES</h2>
+        <p>Careful cleaning for the clothes and fabrics you love.</p>
+    </div>
+
+    <div class="services">
+        <div class="service">
+            <div class="service-icon">👔</div>
+            <h3>DRY CLEANING</h3>
+            <p>Professional care for suits, dresses and delicate garments.</p>
+            <a href="#booking" class="learn">BOOK SERVICE →</a>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">🧺</div>
+            <h3>WASH & FOLD</h3>
+            <p>Everyday clothing washed, dried and neatly folded.</p>
+            <a href="#booking" class="learn">BOOK SERVICE →</a>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">👗</div>
+            <h3>DELICATE FABRICS</h3>
+            <p>Extra attention for special outfits and delicate materials.</p>
+            <a href="#booking" class="learn">BOOK SERVICE →</a>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">🛏️</div>
+            <h3>BEDDING & LINEN</h3>
+            <p>Fresh cleaning for bedsheets, pillowcases and blankets.</p>
+            <a href="#booking" class="learn">BOOK SERVICE →</a>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">👟</div>
+            <h3>SHOE CLEANING</h3>
+            <p>Help your favourite shoes look clean and refreshed.</p>
+            <a href="#booking" class="learn">BOOK SERVICE →</a>
+        </div>
+
+        <div class="service">
+            <div class="service-icon">🚚</div>
+            <h3>PICKUP & DELIVERY</h3>
+            <p>Arrange convenient collection and delivery for your laundry.</p>
+            <a href="#booking" class="learn">BOOK SERVICE →</a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1545173168-9f1947eebb7f?auto=format&fit=crop&w=800&q=80" alt="Laundry care">
+    </div>
+
+    <div class="about-content">
+        <h2>WE CARE ABOUT YOUR CLOTHES</h2>
+        <p>At FreshCare, we understand that your clothes are an important part of your everyday life. Our aim is to make garment care easier and more convenient.</p>
+        <p>We provide laundry services for individuals, families and businesses, with a focus on careful handling and reliable customer service.</p>
+
+        <ul class="checks">
+            <li>Professional garment care</li>
+            <li>Convenient pickup options</li>
+            <li>Careful handling of clothing</li>
+            <li>Flexible service packages</li>
+        </ul>
+
+        <a href="#booking" class="btn">GET STARTED</a>
+    </div>
+</section>
+
+<section id="pricing">
+    <div class="heading">
+        <h2>SIMPLE PRICING</h2>
+        <p>These are sample prices you can adjust to match your business.</p>
+    </div>
+
+    <div class="pricing">
+        <div class="price-card">
+            <h3>WASH & FOLD</h3>
+            <div class="price">₦2,500 <span>/ bag</span></div>
+            <p>For everyday laundry.</p>
+            <ul>
+                <li>Clothing wash</li>
+                <li>Drying and folding</li>
+                <li>Neat packaging</li>
+            </ul>
+            <a href="#booking" class="btn">CHOOSE PLAN</a>
+        </div>
+
+        <div class="price-card featured">
+            <h3>DRY CLEANING</h3>
+            <div class="price">₦3,000 <span>/ garment</span></div>
+            <p>For special clothing.</p>
+            <ul>
+                <li>Garment cleaning</li>
+                <li>Stain treatment</li>
+                <li>Pressing and finishing</li>
+            </ul>
+            <a href="#booking" class="btn">CHOOSE PLAN</a>
+        </div>
+
+        <div class="price-card">
+            <h3>PREMIUM CARE</h3>
+            <div class="price">₦10,000 <span>/ package</span></div>
+            <p>For multiple items.</p>
+            <ul>
+                <li>Multiple garments</li>
+                <li>Careful finishing</li>
+                <li>Pickup options</li>
+            </ul>
+            <a href="#booking" class="btn">CHOOSE PLAN</a>
+        </div>
+    </div>
+</section>
+
+<section class="how">
+    <div class="heading">
+        <h2>HOW IT WORKS</h2>
+        <p>Four simple steps to fresh, clean clothes.</p>
+    </div>
+
+    <div class="steps">
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>BOOK A PICKUP</h3>
+            <p>Tell us what service you need.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>WE COLLECT</h3>
+            <p>Arrange a suitable collection time.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>WE CLEAN</h3>
+            <p>Your garments receive the appropriate care.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>DELIVERY</h3>
+            <p>Collect or arrange delivery of your laundry.</p>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <div class="heading">
+        <h2>HAPPY CUSTOMERS</h2>
+        <p>Examples of customer feedback for this website design.</p>
+    </div>
+
+    <div class="reviews">
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>My clothes came back neatly folded and well packaged. The service made laundry day much easier for me.</p>
+            <h4>AMANDA JAMES</h4>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>I needed my outfit cleaned for a special occasion. The service was convenient and communication was clear.</p>
+            <h4>MICHAEL DAVID</h4>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>The booking process was simple, and I appreciated the attention given to my clothes.</p>
+            <h4>GRACE PETER</h4>
+        </div>
+    </div>
+</section>
+
+<section class="booking" id="booking">
+    <div class="booking-container">
+        <div class="booking-content">
+            <h2>READY FOR FRESH, CLEAN CLOTHES?</h2>
+            <p>Request a laundry service using the form. You can customise these fields to suit your business.</p>
+            <p>📍 Calabar, Nigeria</p>
+            <p>☎ +234 800 000 0000</p>
+            <p>✉ info@freshcare.com</p>
+        </div>
+
+        <form class="booking-form" onsubmit="event.preventDefault(); alert('Thank you! Your sample booking has been submitted. Connect a backend to receive real bookings.');">
+            <h3>BOOK A SERVICE</h3>
+
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input id="name" type="text" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" type="tel" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="service">Choose Service</label>
+                <select id="service" required>
+                    <option value="">Select a service</option>
+                    <option>Dry Cleaning</option>
+                    <option>Wash & Fold</option>
+                    <option>Delicate Garments</option>
+                    <option>Bedding & Linen</option>
+                    <option>Shoe Cleaning</option>
+                    <option>Pickup & Delivery</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input id="date" type="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Additional Information</label>
+                <textarea id="message" placeholder="Tell us about your laundry"></textarea>
+            </div>
+
+            <button type="submit" class="btn">SUBMIT BOOKING</button>
+        </form>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-content">
+        <div>
+            <h2 class="footer-logo">Fresh<span>Care.</span></h2>
+            <p>Making laundry care simpler, fresher and more convenient.</p>
+        </div>
+
+        <div>
+            <h3>CONTACT</h3>
+            <p>Calabar, Nigeria</p>
+            <p>+234 800 000 0000</p>
+            <p>info@freshcare.com</p>
+        </div>
+
+        <div>
+            <h3>QUICK LINKS</h3>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#about">About Us</a>
+            <a href="#pricing">Pricing</a>
+        </div>
+
+        <div>
+            <h3>OPENING HOURS</h3>
+            <p>Monday - Friday: 8AM - 7PM</p>
+            <p>Saturday: 9AM - 5PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © 2026 FRESHCARE DRY CLEANING. ALL RIGHTS RESERVED.
+    </div>
+</footer>
+
+</body>
+</html>
